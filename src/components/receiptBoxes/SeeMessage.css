@@ -1,0 +1,40 @@
+.see-message-container {
+    display: flex;
+    flex-direction: column;
+    padding: 55px;
+
+
+}
+
+.see-message-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+
+}
+
+.see-message-user {
+    display: flex;
+    align-items: center;
+
+}
+
+.see-message-avatar {
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.see-centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-container {
+
+    text-align: justify;
+
+}

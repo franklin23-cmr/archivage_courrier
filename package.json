@@ -1,0 +1,59 @@
+{
+  "name": "archivage_mail",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fusionworks/ra-s3-input": "^0.1.6",
+    "@lottiefiles/react-lottie-player": "^3.5.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.3",
+    "context": "^3.0.5",
+    "leaflet": "^1.8.0",
+    "prop-types": "^15.8.1",
+    "ra-data-json-server": "^4.2.1",
+    "ra-data-simple-rest": "^4.2.1",
+    "ra-i18n-polyglot": "^4.2.1",
+    "ra-input-rich-text": "^4.2.2",
+    "ra-jsonapi-client": "^0.9.0",
+    "react": "^18.2.0",
+    "react-admin": "^4.2.2",
+    "react-bootstrap": "^2.7.0",
+    "react-doc-viewer": "^0.1.5",
+    "react-dom": "^18.2.0",
+    "react-form-layout": "^0.1.7",
+    "react-hook-form": "^7.33.1",
+    "react-hooks-global-state": "^2.0.0",
+    "react-leaflet": "^4.0.2",
+    "react-quill": "^2.0.0",
+    "react-router": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "serve": "^14.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
