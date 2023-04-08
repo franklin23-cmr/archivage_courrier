@@ -21,6 +21,8 @@ import SimpleUser from "./Role_layout/SimpleUser";
 import Test from "./Role_layout/test";
 import { createContext } from "react";
 import receiveBoxes from "./components/receiveBoxes";
+import Profile from "./components/profile";
+import profile from "./components/profile";
 
 
 
@@ -38,14 +40,12 @@ const App = () => {
    <Admin requireAuth dataProvider={dataProvider} authProvider={authProvider} loginPage={SignIn}  layout={MyLayout} 
      theme={lightTheme}>
       {console.log("perperper",per)}
-        
-        {per ==='admin' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null}
-        {per ==='simpleUser' ? <Resource name= 'simpleUser' options={{ label: 'archivage' }} {...archivingSimpleUser}/> : null}
-
+        <Resource name="configuration" {...profile}/>
         <Resource name= 'message' options={{ label: 'Boite reception' }} {...receiptBoxes} />
         <Resource name= "user" options={{ label: 'Gestion utilisateur' }} {...manageUser} />
         <Resource name= "envoyer" options={{ label: 'boite envoie' }} {...receiveBoxes}/>
-
+        {per ==='admin' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null}
+        {per ==='simpleUser' ? <Resource name= 'simpleUser' options={{ label: 'archivage' }} {...archivingSimpleUser}/> : null}
         {/* {permissions==='simpleUser' ? <Resource name= "simpleUser" options={{ label: 'archive'  }} {...archivingSimpleUser} /> : null } */}
       
       <CustomRoutes>
@@ -53,15 +53,13 @@ const App = () => {
               key="/sendmessage"
               path="/sendmessage"
               element={<SendMessageDialog/>}
-          />
-      </CustomRoutes>
-    
-    <CustomRoutes>
-      <Route
-              key="/configuration"
-              path="/configuration"
-              element={<ProfileEdit/>}
-          />
+            />
+
+            <Route
+                key="/configuration"
+                path="/configuration"
+                element={<ProfileEdit/>}
+              />      
     </CustomRoutes>
   
   {per => {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="aacbac85-4c6d-4de2-bae9-68dff285374a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/manageUser/UserCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/manageUser/UserCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/manageUser/UserEdit .js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/manageUser/UserEdit .js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/manageUser/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/manageUser/UserList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/profile/ProfileEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile/ProfileEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fetchURl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/fetchURl.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2O3NMDN1bThePDrFbLFnZ2nKYrq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aacbac85-4c6d-4de2-bae9-68dff285374a" name="Default Changelist" comment="" />
+      <created>1680785258941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680785258941</updated>
+      <workItem from="1680785261120" duration="30000" />
+    </task>
+    <servers />
+  </component>
+</project>

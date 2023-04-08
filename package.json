@@ -2,6 +2,7 @@
   "name": "archivage_mail",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://eb6b-129-0-205-144.ngrok-free.app",
   "dependencies": {
     "@fusionworks/ra-s3-input": "^0.1.6",
     "@lottiefiles/react-lottie-player": "^3.5.0",

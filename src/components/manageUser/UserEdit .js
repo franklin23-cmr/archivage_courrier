@@ -1,10 +1,10 @@
 
-import { DateInput, Edit, PasswordInput, SelectInput, SimpleForm, TextInput } from 'react-admin';
+import { DateInput, Edit, ImageField, PasswordInput, SelectInput, SimpleForm, TextInput } from 'react-admin';
 
 export const UserEdit = () => (
     <Edit title={'utilisateurs'} >
         <SimpleForm>
-            <TextInput source="photo" />
+            <ImageField source="photo.path" title='profile' />
             <TextInput source="nom" />
             <TextInput source="prenom" />
             <TextInput source="grade" />

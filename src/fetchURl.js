@@ -1,5 +1,5 @@
-// export const  baseUrl ="https://7f7b-37-19-200-19.ngrok.io";
-export const baseUrl = "http://localhost:5004";
+export const  baseUrl ="https://eb6b-129-0-205-144.ngrok-free.app";
+//export const baseUrl ="http://localhost:5004";
 export const relativeUrlArchive = "archivage";
 export const sendMsgUrlSuperUser= "/superUser";
 export const sendMsgUrlAdmin ="/admin";
@@ -39,7 +39,6 @@ export const sendMsgUrlAdmin ="/admin";
     ).then((res) => res.json())
     console.log("response", res.state);
     return res.state 
-    
   };
 
   export const getMessageByMatricule=(matricule)=>{

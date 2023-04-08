@@ -1,15 +1,52 @@
-import { Create,  ImageField, ImageInput, PasswordInput, ReferenceInput, SelectInput, SimpleForm,  TextInput, useRefresh,  } from 'react-admin';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react';
+import { Create,  ImageField, ImageInput, PasswordInput, SelectInput, SimpleForm,  TextInput, useNotify, useRefresh,  } from 'react-admin';
 import { baseUrl } from '../../fetchURl';
 import { useNavigate } from 'react-router';
 
-const UserCreate = () => (
+const UserCreate = () => {
+
+    
+    const refresh = useRefresh();
+    const navigate = useNavigate()
+    const notify = useNotify()
+    const user_id = localStorage.getItem("user_id")
+    console.log("the user_id",user_id );
+
+    const PostCreate = async (data) => {
+         console.log("create and user" , data);
+         const formData = new FormData();
+        
+        formData.append('email_address', data.email_address);
+        formData.append('grade', data.grade);
+        formData.append('matricule', data.matricule);
+        formData.append('nom', data.nom);
+        formData.append('password', data.password);
+        formData.append('type_utilisateur', data.type_utilisateur);
+        formData.append('prenom', data.prenom);
+        // formData.append('piecesJointes',   JSON.stringify(data.piecesJointes));
+        if (data.photo != null) {
+            formData.append('file', data.photo.rawFile)   
+        }
+
+        const res = await fetch( `${baseUrl}/user`, {
+            method: "POST",
+            body: formData,
+        }
+        ).then((res) => res.json())
+        .finally(
+            ()=> refresh(),
+        navigate(`/user`)
+        )
+        notify("save")
+    }
+
+return(
     <Create>
-        <SimpleForm>
-            <TextInput source="photo"  />
+        <SimpleForm onSubmit={PostCreate} >
+
+            <ImageInput source="photo" label="add and picture">
+                <ImageField source="src" title="title" />
+            </ImageInput>
+            
             <TextInput source="nom" required />
             <TextInput source="prenom" required/>
             <TextInput source="grade" required/>
@@ -24,5 +61,5 @@ const UserCreate = () => (
         </SimpleForm>
     </Create>
 );
-
+};   
 export default UserCreate

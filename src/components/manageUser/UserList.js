@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CreateButton, defaultTheme, DeleteButton, EditButton, ExportButton, FilterButton, FilterContext, FilterForm, ListBase, SearchInput, SortButton, TopToolbar, useListContext } from 'react-admin';
+import { CreateButton, defaultTheme, DeleteButton, EditButton, ExportButton, FilterButton, FilterContext, FilterForm, ImageField, ListBase, SearchInput, SortButton, TopToolbar, useListContext } from 'react-admin';
 import inflection from 'inflection';
 import { Grid, Card, CardMedia, CardContent, CardActions, Typography, } from '@mui/material';
 import { Box, useMediaQuery} from '@mui/material';
@@ -15,7 +15,10 @@ const postFilters = [
 const UserList = () => (
     <List >
     <Datagrid rowClick="edit">
-        <TextField source="photo" />
+        {/* <TextField source="photo" /> */}
+        <ImageField source="photo.path" 
+                    sx={{ '& img': { maxWidth: 50, maxHeight: 50, objectFit: 'contain' } }}
+                    title="title" />
         <TextField source="nom" />
         <TextField source="prenom" />
         <TextField source="grade" />

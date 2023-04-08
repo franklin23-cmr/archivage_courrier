@@ -10,7 +10,9 @@ export const authProvider = {
         const request = new Request(`${baseUrl}/user/connect`, {
             method: 'POST',
             body: JSON.stringify({ matricule, password }),
-            headers: new Headers({ 'Content-Type': 'application/json' }),
+            headers: new Headers({
+                "ngrok-skip-browser-warning": "foobar",
+                'Content-Type': 'application/json' }),
         });
         return fetch(request)
             .then(response => {
