@@ -1,6 +1,8 @@
-import { Edit, ImageField, ImageInput, PasswordInput, required, SaveButton, SimpleForm, TextField, TextInput, Toolbar, useNotify, useRecordContext, useRefresh } from "react-admin";
+import { Edit, FunctionField, ImageField, ImageInput, PasswordInput, required, SaveButton, SimpleForm, TextField, TextInput, Toolbar, useNotify, useRecordContext, useRedirect, useRefresh } from "react-admin";
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router";
+import Image from 'react-bootstrap/Image';
+
 import { baseUrl } from "../../fetchURl";
 
 
@@ -15,6 +17,7 @@ const ProfileEdit = () => {
 
     const PostCreate = async (data) => {
     console.log("create and for one user", data);
+    alert(JSON.stringify(data));
     }
 
     return (
@@ -31,12 +34,24 @@ const ProfileEdit = () => {
             */
            title="mon profile"
         >
-            <SimpleForm  onSubmit={PostCreate}>
+            <SimpleForm  onSubmit={PostCreate} toolbar={<MyToolbar/>}>
             {/* <TextField source="photo" /> */}
-               
-                <ImageField source="photo.path" 
-                    sx={{ '& img': { maxWidth: 50, maxHeight: 50, objectFit: 'contain' } }}
-                    title="title" />
+
+                <FunctionField label="Name" render={(record) => {
+
+                    return record.photo ? (
+                        <ImageField source="photo.path" 
+                        sx={{ '& img': { maxWidth: 600, maxHeight: 300, objectFit: 'contain' } }}
+                        title="title" />
+                    ):(
+                        <Image src="holder.js/171x180" thumbnail />
+                        )
+                }}
+                     />
+
+                {/* <ImageField source="photo.path" 
+                    sx={{ '& img': { maxWidth: 600, maxHeight: 300, objectFit: 'contain' } }}
+                    title="title" /> */}
 
                 <ImageInput source="photo" label="changer son profile">
                     <ImageField source="photo" />
@@ -47,10 +62,77 @@ const ProfileEdit = () => {
                 <TextInput source="grade" validate={required()}/>
                 <TextInput source="email_address" validate={required()} />
                 <TextInput source="matricule" disabled/>
-                <PasswordInput source="password"  validate={required()} />             
+                <PasswordInput source="password"  defaultValue="1234@1234" value="1234@1234" validate={required()} />             
             </SimpleForm>
         </Edit>
     );
 };
 
 export default ProfileEdit;
+
+
+export const MyToolbar = () => {
+
+    const { getValues } = useFormContext();
+    const redirect = useRedirect();
+    const refresh = useRefresh();
+    const navigate = useNavigate()
+    const notify = useNotify()
+    const user_id = localStorage.getItem("user_id")
+    console.log("the user_id",user_id );
+
+    
+    const handleClick = async e => {
+        e.preventDefault(); // necessary to prevent default SaveButton submit logic
+        const { id, ...data } = getValues();
+        console.log("my data", data);
+        const formData = new FormData();
+        
+       formData.append('email_address', data.email_address);
+       formData.append('grade', data.grade);
+       formData.append('matricule', data.matricule);
+       formData.append('nom', data.nom);
+       formData.append('password', data.password);
+       formData.append('type_utilisateur', data.type_utilisateur);
+       formData.append('prenom', data.prenom);
+       // formData.append('piecesJointes',   JSON.stringify(data.piecesJointes));
+       if (data.photo.rawFile) {
+        alert(JSON.stringify(data.photo) );
+           formData.append('file', data.photo.rawFile)   
+       }
+       
+       const res = await fetch( `${baseUrl}/profile/${user_id}`, {
+           method: "POST",
+           body: formData,
+       }
+       ).then((res) => res.json())
+       .then(()=>{ 
+        refresh()
+        
+        notify("save")
+
+        navigate(`/configuration`)
+     }
+       )
+       .catch(() =>{
+        notify("server unvailable, save failed")
+       } )
+      
+
+    }
+
+    const PostCreate = async (data) => {
+        console.log("create and user" , data);
+        alert(`view data ${JSON.stringify(data)}`);
+        
+   }
+
+
+   return ( 
+
+    <Toolbar type="button" onClick={handleClick}>
+        <SaveButton type="button" onClick={handleClick} />
+    </Toolbar>
+   )
+
+};

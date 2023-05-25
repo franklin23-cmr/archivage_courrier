@@ -141,7 +141,7 @@ const SendMessageDialog = (props) => {
                     </Button>
                     <Button variant="primary" 
                     type="submit"
-                    fullWidth 
+                     
                     onClick={handleUploadClick}
                     >
                         Envoyer

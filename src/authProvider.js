@@ -63,6 +63,7 @@ export const authProvider = {
     
         console.log( localStorage.getItem('matricule'))
         console.log("role", role);
+        
         return role ? Promise.resolve(role) : Promise.reject(); 
     },
     getIdentity: () => Promise.resolve({

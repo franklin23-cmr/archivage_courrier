@@ -31,49 +31,62 @@ const App = () => {
   const per = localStorage.getItem("permissions");
   const [role , setRole] = React.useState(null);
   
+  // useEffect(()=>{
+  //   const pers = localStorage.getItem("permissions");
+  //   console.log(permissions)
+  //   alert("Permissions", permissions)
+  // },[])
   console.log(per);
   if (per === undefined) return null 
 
-  return  !isLoading ? (
+  return (
    
   <BrowserRouter>       
    <Admin requireAuth dataProvider={dataProvider} authProvider={authProvider} loginPage={SignIn}  layout={MyLayout} 
      theme={lightTheme}>
-      {console.log("perperper",per)}
-        <Resource name="configuration" {...profile}/>
-        <Resource name= 'message' options={{ label: 'Boite reception' }} {...receiptBoxes} />
-        <Resource name= "user" options={{ label: 'Gestion utilisateur' }} {...manageUser} />
-        <Resource name= "envoyer" options={{ label: 'boite envoie' }} {...receiveBoxes}/>
-        {per ==='admin' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null}
-        {per ==='simpleUser' ? <Resource name= 'simpleUser' options={{ label: 'archivage' }} {...archivingSimpleUser}/> : null}
-        {/* {permissions==='simpleUser' ? <Resource name= "simpleUser" options={{ label: 'archive'  }} {...archivingSimpleUser} /> : null } */}
       
+ 
+            {permissions => (
+            
+           
+                <>
+
+                {console.log("perperper",permissions)}
+                {permissions ==='admin' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null}
+                {permissions ==='simpleUser' ? <Resource name= 'simpleUser' options={{ label: 'archivage' }} {...archivingSimpleUser}/> : null}
+                {permissions ==='superUser' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null}
+                
+                <Resource name="configuration" {...profile}/>
+                <Resource name= 'message' options={{ label: 'Boite reception' }} {...receiptBoxes} />
+                <Resource name= "user" options={{ label: 'Gestion utilisateur' }} {...manageUser} />
+                <Resource name= "envoyer" options={{ label: 'boite envoie' }} {...receiveBoxes}/>
+                {/* {permissions ==='superUser' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null} */}
+                {/* {permissions==='simpleUser' ? <Resource name= "simpleUser" options={{ label: 'archive'  }} {...archivingSimpleUser} /> : null } */}
+
+              </>
+            
+          )}
+    
       <CustomRoutes>
                 <Route
               key="/sendmessage"
               path="/sendmessage"
               element={<SendMessageDialog/>}
-            />
-
-            <Route
-                key="/configuration"
-                path="/configuration"
-                element={<ProfileEdit/>}
-              />      
+            />   
     </CustomRoutes>
-  
-  {per => {
-    <>
-      {console.log("permissions apps.js",per)}
-      {per ==='admin' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null}
-      {per ==='simpleUser' ? <Resource name= 'simpleUser' options={{ label: 'archivage' }} {...archivingSimpleUser}/> : null}
-    </>
-  }}
+ 
+      
+    <CustomRoutes>
+                <Route
+              key="/configuration"
+              path="/configuration"
+              element={<ProfileEdit/>}
+            />   
+    </CustomRoutes>
  
 </Admin> 
     </BrowserRouter>
-   
-  ): null 
+  )
 }
 export default App;
 
