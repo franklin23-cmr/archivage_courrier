@@ -1,5 +1,5 @@
-// export const  baseUrl ="https://eb6b-129-0-205-144.ngrok-free.app";
-export const baseUrl ="http://localhost:5004";
+export const  baseUrl ="https://e7b8-41-202-207-4.ngrok-free.app";
+//export const baseUrl ="http://localhost:5004";
 export const relativeUrlArchive = "archivage";
 export const sendMsgUrlSuperUser= "/superUser";
 export const sendMsgUrlAdmin ="/admin";
