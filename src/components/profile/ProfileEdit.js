@@ -1,13 +1,10 @@
-import { Edit, FunctionField, ImageField, ImageInput, PasswordInput, required, SaveButton, SimpleForm, TextField, TextInput, Toolbar, useNotify, useRecordContext, useRedirect, useRefresh } from "react-admin";
+import { Edit, FunctionField, ImageField, ImageInput, PasswordInput, required, SaveButton, SimpleForm, TextField, TextInput, Toolbar, useGetIdentity, useNotify, useRecordContext, useRedirect, useRefresh } from "react-admin";
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router";
 import Image from 'react-bootstrap/Image';
-
 import { baseUrl } from "../../fetchURl";
 
-
 const ProfileEdit = () => {
-
     const record = useRecordContext();
     const id = localStorage.getItem('user_id')
     const refresh = useRefresh();
@@ -74,6 +71,7 @@ export default ProfileEdit;
 export const MyToolbar = () => {
 
     const { getValues } = useFormContext();
+    const { isLoading, error, data, refetch } = useGetIdentity();
     const redirect = useRedirect();
     const refresh = useRefresh();
     const navigate = useNavigate()
@@ -104,21 +102,18 @@ export const MyToolbar = () => {
        const res = await fetch( `${baseUrl}/profile/${user_id}`, {
            method: "POST",
            body: formData,
-       }
-       ).then((res) => res.json())
-       .then(()=>{ 
-        refresh()
-        
-        notify("save")
-
-        navigate(`/configuration`)
-     }
-       )
+       }).then((res)=> res.json())
+       .then((data)=>{ 
+            refresh()
+            notify("save")
+            alert(`------------>>>> data  ${JSON.stringify(data)}`)
+            localStorage.setItem('nom', data.nom +" "+data.prenom)
+            navigate(`/`)
+            // refetch()
+     })
        .catch(() =>{
         notify("server unvailable, save failed")
-       } )
-      
-
+       })
     }
 
     const PostCreate = async (data) => {
@@ -130,7 +125,7 @@ export const MyToolbar = () => {
 
    return ( 
 
-    <Toolbar type="button" onClick={handleClick}>
+    <Toolbar type="button">
         <SaveButton type="button" onClick={handleClick} />
     </Toolbar>
    )

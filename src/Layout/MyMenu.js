@@ -50,10 +50,10 @@ export const MyMenu  = ({ dense = false }) => {
         {permissions !== "simpleUser" ? <Menu.Item to= '/message'  primaryText="Boite reception" leftIcon={<EmailIcon/>} color="primary"/> : null }   
         {permissions !== "simpleUser" ? <Menu.Item to= '/envoyer'  primaryText="Boite envoie" leftIcon={<EmailIcon/>} color="primary"/> : null }
         <Menu>
-            {permissions === "admin" ? <Menu.Item to="/archivage" state={{ _scrollToTop: true }} primaryText={translate(`Archive_admin`, )} leftIcon={<ArchiveIcon />} dense={dense} /> : null}
+            {permissions === "admin" ? <Menu.Item to="/archivage" state={{ _scrollToTop: true }} primaryText={translate(`Archive`, )} leftIcon={<ArchiveIcon />} dense={dense} /> : null}
             {/* <Link to={createPath({ resource: 'message/admin', type: 'edit', id: `${mat}` })}>My favorite post</Link> */}
-            {permissions ==='simpleUser'? <Menu.Item to="/simpleUser" state={{ _scrollToTop: true }} primaryText={translate(`Archive_simpleUser`,)} leftIcon={<ArchiveIcon />} dense={dense} re />: null}
-            {permissions ==='superUser'? <Menu.Item to="/archivage" state={{ _scrollToTop: true }} primaryText={translate(`Archive_superUser`, )} leftIcon={<ArchiveIcon />} dense={dense} />: null}
+            {permissions ==='simpleUser'? <Menu.Item to="/simpleUser" state={{ _scrollToTop: true }} primaryText={translate(`Archive`,)} leftIcon={<ArchiveIcon />} dense={dense} re />: null}
+            {permissions ==='superUser'? <Menu.Item to="/archivage" state={{ _scrollToTop: true }} primaryText={translate(`Archive`, )} leftIcon={<ArchiveIcon />} dense={dense} />: null}
         </Menu>
         <Box
              sx={{

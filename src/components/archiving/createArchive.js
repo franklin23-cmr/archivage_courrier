@@ -10,6 +10,7 @@ const ArchivageCreate = () => {
     const user_id = localStorage.getItem("user_id")
 
     console.log("the user_id",user_id );
+
     const PostCreate = async (data) => {
          console.log("data archive create" , data);
          const formData = new FormData();
@@ -58,7 +59,7 @@ const ArchivageCreate = () => {
 
  return(
     <Create>
-        <SimpleForm onSubmit={PostCreate}>
+        <SimpleForm onSubmit={PostCreate} title=''>
             {/* <DateInput source="create_time" /> */}
             <TextInput source="type" defaultValue={'courrier'} hidden/>
             <TextInput source="num_ref" label="numero de reference" validate={[required()]}/>
@@ -67,12 +68,12 @@ const ArchivageCreate = () => {
             <DateInput source="date_arrive"  validate={[required()]}/>
             <DateInput source="date_sortie" validate={[required()]}/>
             <TextInput source="id_utilisateur" label="information sur archiveur" defaultValue={user_id} value={user_id} disabled/>
-            <SelectInput source="etat"  name='etat(classé/non classé)' choices={[
+            <SelectInput source="etat" defaultValue="non classé" label="etat (classé/non classé)" choices={[
                 { id: 'classé', name: 'classé' },
                 { id: 'non classé', name: 'non classé' },
             ]} validate={[required()]} />
             {/* <NumberInput source="id_niveau_archivage" /> */}
-             <SelectInput source="id_niveau_archivage" label="normal / privé" name='id_niveau_archivage' choices={[
+             <SelectInput source="id_niveau_archivage" label="normal/privé" name='id_niveau_archivage' choices={[
                 { id: 1, name: 'normal' },
                 { id: 2, name: 'privé' },
             ]} validate={[required()]} />

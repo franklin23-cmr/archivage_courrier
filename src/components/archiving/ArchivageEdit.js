@@ -42,7 +42,7 @@ export const ArchivageEdit = () => {
         
     return(
     <Edit >
-        <SimpleForm  toolbar={<MyToolbar  state={permissions} />}>
+        <SimpleForm  toolbar={<MyToolbar  state={permissions} />} title=''>
             {permissions ==="admin" && 
             <>
             <TextInput source="type" defaultValue={'courrier'} hidden/>
