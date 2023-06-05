@@ -40,17 +40,12 @@ const App = () => {
   if (per === undefined) return null 
 
   return (
-   
   <BrowserRouter>       
    <Admin requireAuth dataProvider={dataProvider} authProvider={authProvider} loginPage={SignIn}  layout={MyLayout} 
      theme={lightTheme}>
       
- 
-            {permissions => (
-            
-           
+           {permissions => (
                 <>
-
                 {console.log("perperper",permissions)}
                 {permissions ==='admin' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null}
                 {permissions ==='simpleUser' ? <Resource name= 'simpleUser' options={{ label: 'archivage' }} {...archivingSimpleUser}/> : null}
@@ -63,27 +58,26 @@ const App = () => {
                 {/* {permissions ==='superUser' ? <Resource name= 'archivage' options={{ label: 'archivage' }} {...archiving}/> : null} */}
                 {/* {permissions==='simpleUser' ? <Resource name= "simpleUser" options={{ label: 'archive'  }} {...archivingSimpleUser} /> : null } */}
 
-              </>
-            
+                <CustomRoutes>
+                    <Route
+                  key="/sendmessage"
+                  path="/sendmessage"
+                  element={<SendMessageDialog/>}
+                />   
+              </CustomRoutes>
+
+
+              <CustomRoutes>
+                    <Route
+                  key="/configuration"
+                  path="/configuration"
+                  element={<ProfileEdit/>}
+                />   
+              </CustomRoutes>
+
+              </>  
           )}
-    
-      <CustomRoutes>
-                <Route
-              key="/sendmessage"
-              path="/sendmessage"
-              element={<SendMessageDialog/>}
-            />   
-    </CustomRoutes>
- 
-      
-    <CustomRoutes>
-                <Route
-              key="/configuration"
-              path="/configuration"
-              element={<ProfileEdit/>}
-            />   
-    </CustomRoutes>
- 
+
 </Admin> 
     </BrowserRouter>
   )
